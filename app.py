@@ -14,7 +14,7 @@ from io import BytesIO
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:1234567890@localhost/danieltzy766Hi$login '
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://danieltzy766Hi:1234567890@danieltzy766Hi.mysql.pythonanywhere-services.com/danieltzy766Hi$login'
 db.init_app(app)
 
 login_manager = LoginManager()
