@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jimbodat</title>
+  <link rel="shortcut icon" type="image/png" href="../static/assetsz/images/logos/s.png" />
+  <link rel="stylesheet" href="../static/assetsz/css/styles.min.css" />
+  <style>
+    /* Style untuk popup alert */
+    .popup-alert {
+        display: none;
+        position: fixed;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1050;
+        min-width: 300px;
+        padding: 15px;
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+    @media (max-width: 600px) {
+        .popup-alert {
+            font-size: 14px; /* Perkecil ukuran font agar sesuai di layar kecil */
+            min-width: 90%;  /* Lebar mengikuti layar pada perangkat kecil */
+        }
+    }
+    .popup-alert.success { background-color: #d4edda; color: #155724; border-color: #c3e6cb; }
+    .popup-alert.warning { background-color: #fff3cd; color: #856404; border-color: #ffeeba; }
+    .popup-alert.danger { background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; }
+</style>
+</head>
+
+<body>
+    {% with messages = get_flashed_messages(with_categories=True) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div id="popup-alert" class="popup-alert {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+      <div class="d-flex align-items-center justify-content-center w-100">
+        <div class="row justify-content-center w-100">
+          <div class="col-md-8 col-lg-6 col-xxl-3">
+            <div class="card mb-0">
+              <div class="card-body">
+                <a href="#" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                  <img src="../static/assetsz/images/logos/Screenshot 2024-11-01 161222.png" width="180" alt="">
+                </a>
+                <p class="text-center">Free Palestine🍉</p>
+                <form method="POST">
+                  <div class="mb-3">
+                    <label for="exampleInputtext1" class="form-label">Name</label>
+                    <input type="text" name="username" class="form-control" id="exampleInputtext1" placeholder="Username" required>
+                  </div>
+                  <div class="mb-4">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Register</button>
+                  <div class="d-flex align-items-center justify-content-center">
+                    <p class="fs-4 mb-0 fw-bold">Already have an Account?</p>
+                    <a class="text-primary fw-bold ms-2" href="{{ url_for('login') }}">Sign In</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../static/assetsz/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../static/assetsz/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Script untuk menampilkan dan menghilangkan popup alert secara otomatis
+    document.addEventListener("DOMContentLoaded", function() {
+        const popup = document.getElementById("popup-alert");
+        if (popup) {
+            popup.style.display = "block";
+            setTimeout(() => {
+                popup.style.display = "none";
+            }, 3000); // 3000 ms = 3 detik
+        }
+    });
+</script>
+</body>
+
+</html>
