@@ -1,0 +1,9 @@
+Flask==2.3.2
+Flask-SQLAlchemy==3.0.4
+Flask-Login==0.6.2
+Werkzeug==2.3.7
+pandas==1.5.3
+openpyxl==3.1.2
+mysql-connector-python==8.0.33
+PyMySQL==1.1.0
+Flask-Paginate==0.8.2
